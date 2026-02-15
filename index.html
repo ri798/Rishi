@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Love Prank 😜</title>
+
+<style>
+body{
+  text-align:center;
+  font-family:Arial;
+  margin-top:100px;
+  overflow:hidden;
+}
+
+button{
+  padding:10px 20px;
+  font-size:18px;
+  margin:10px;
+  cursor:pointer;
+  position:absolute;
+}
+
+#yes{
+  left:40%;
+  top:60%;
+}
+
+#no{
+  left:55%;
+  top:60%;
+}
+
+#heartBox{
+  position:relative;
+  width:200px;
+  height:200px;
+  margin:auto;
+  display:none;
+}
+
+#heart{
+  font-size:120px;
+  animation: pop 1s ease forwards;
+}
+
+#name{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  font-size:36px;
+  color:red;
+  opacity:0;
+}
+
+/* animations */
+@keyframes pop{
+  from{transform:scale(0);}
+  to{transform:scale(1);}
+}
+
+@keyframes break{
+  from{transform:scale(1);}
+  to{transform:scale(0) rotate(20deg);}
+}
+
+@keyframes comeOut{
+  from{
+    transform:translate(-50%,-50%) scale(0);
+    opacity:0;
+  }
+  to{
+    transform:translate(-50%,-120%) scale(1.2);
+    opacity:1;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Do you love me? 😄</h1>
+
+<button id="yes" onclick="start()">Yes</button>
+<button id="no" onclick="moveNo()">No</button>
+
+<div id="heartBox">
+  <div id="heart">❤️</div>
+  <div id="name">Paglu 💕</div>
+</div>
+
+<script>
+function start(){
+  var box = document.getElementById("heartBox");
+  var heart = document.getElementById("heart");
+  var name = document.getElementById("name");
+
+  box.style.display = "block";
+
+  setTimeout(()=>{
+    heart.innerHTML = "💔";
+    heart.style.animation = "break 1s forwards";
+  },1500);
+
+  setTimeout(()=>{
+    name.style.animation = "comeOut 1.5s forwards";
+  },2000);
+}
+
+function moveNo(){
+  var noBtn = document.getElementById("no");
+
+  var x = Math.random() * (window.innerWidth - 100);
+  var y = Math.random() * (window.innerHeight - 50);
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+</script>
+
+</body>
+</html>
